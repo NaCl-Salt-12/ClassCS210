@@ -7,6 +7,7 @@ public class Reference{
 
     public Reference(string book, int chapter, int startverse, int endverse)
     {
+        // A constructor that takes the book name, chapter number, and starting and ending verse numbers.
         _book = book;
         _chapter = chapter;
         _startverse = startverse;
@@ -14,6 +15,7 @@ public class Reference{
     }
     public Reference(string book, int chapter, int verse)
     {
+        // A constructor that takes the book name, chapter number, and verse number.
         _book = book;
         _chapter = chapter;
         _startverse = verse;
@@ -37,7 +39,7 @@ public class Reference{
         if (!int.TryParse(parts[0], out _chapter))
             throw new ArgumentException("Invalid chapter number.");
 
-        // Determine if a range or a single verse is provided.
+        // Determine if a range of verses or a single verse is provided.
         if (parts[1].Contains("-"))
         {
             string[] verses = parts[1].Split('-');
@@ -62,6 +64,7 @@ public class Reference{
     }
     public string GetRefrence()
     {
+        // Return the reference in the format "book chapter:verse-verse".
         if (_startverse == _endverse)
         {
             return _book + " " + _chapter + ":" + _startverse;
@@ -73,18 +76,22 @@ public class Reference{
     }
     public string GetBook()
     {
+        // Return the book name.
         return _book;
     }
     public int GetChapter()
     {
+        // Return the chapter number.
         return _chapter;
     }
     public int GetStartVerse()
     {
+        // Returns the starting verse number.
         return _startverse;
     }
     public int GetEndVerse()
     {
+        // Returns the ending verse number.
         return _endverse;
     }
 }

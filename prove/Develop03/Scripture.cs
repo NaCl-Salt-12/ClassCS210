@@ -9,11 +9,15 @@ public class Scripture
 
     public Scripture(Reference reference, List<Word> words)
     {
+        // scripture constructor that takes a reference and a list of words.
         _reference = reference;
         _words = words;
     }
     public Scripture(Reference reference)
     {
+        // I have pervious expericne with SQLite so I will used it to get the scripture text.
+        // and I looked up the C# documentation for the SQLite library.
+        // This creates a connection to the SQLite database and gets the scripture text for the reference.
         _reference = reference;
         using var connection = new SqliteConnection("Data Source=./lds-scriptures-sqlite.db");
         connection.Open();
@@ -44,6 +48,7 @@ public class Scripture
     }
     public string DisplayScriputure()
     {
+        // Display the scripture with the words hidden.
         string scripture = _reference.GetRefrence() + "\n";
         foreach (Word word in _words)
         {
@@ -53,6 +58,7 @@ public class Scripture
     }
     public Boolean IsAllHidden()
     {
+        // checks if all the words are hidden.
         foreach (Word word in _words)
         {
             if (!word.IsHidden())
